@@ -131,5 +131,32 @@ public class Interval {
         return C;
 
     }
+    @Override
+    public String toString() {
 
+        if(pocetnaPripadaIntervalu) {
+            if (krajnjaPripadaIntervalu) {
+                return "[" + this.pocetnaTacka + "," + this.krajnjaTacka + "]";
+            }
+            else return "[" + this.pocetnaTacka + "," + this.krajnjaTacka + ")";
+        }
+        else {
+            if (krajnjaPripadaIntervalu) {
+                return "(" + this.pocetnaTacka + "," + this.krajnjaTacka + "]";
+            }
+            else if(this.krajnjaTacka == 0 && this.pocetnaTacka == 0) {
+                return "()";
+            }
+            else
+                return "(" + this.pocetnaTacka + "," + this.krajnjaTacka + ")";
+        }
+    }
+    @Override
+    public boolean equals(Object o) {
+        if(o instanceof Interval) {
+            Interval A = (Interval) o;
+            return (A.pocetnaTacka == this.pocetnaTacka && A.krajnjaTacka == this.krajnjaTacka && A.pocetnaPripadaIntervalu == this.pocetnaPripadaIntervalu && A.krajnjaPripadaIntervalu == this.krajnjaPripadaIntervalu);
+        }
+        return false;
+    }
 }
